@@ -9,7 +9,7 @@ export default Mixin.create(WithListeners, {
     const _model = {};
     Object.keys(model).forEach(key => {
       // here (see comment below on deleting)
-      if (typeof this[key] !== 'undefined' && this[key].isDescriptor) {
+      if (this[key] && this[key].isDescriptor) {
         _model[`${PREFIX}${key}`] = model[key];
         const meta = this.constructor.metaForProperty(key) || {};
         if (typeof meta.catch === 'function') {
